@@ -3,15 +3,38 @@
 <head>
 	<title></title>
 	<script src="gs-loader/gs-loader.js"></script>
+	<script src="scripts/tablecloth.js"></script>
+	<meta charset="utf-8">
 </head>
 <body>
 <script>
 var sheetId = "1x491NmMhzZMmqSd9GEWu-kHZs374-FtJA3oTWatWK6A";
 
-var result = loadGS(sheetId);
+loadGS(sheetId).then(function (data) {
+	var tableSet = Tablecloth.tableSet(data);
+	console.log(tableSet.getTables());
+	console.log(tableSet.conjugate("The [Things.color] [Things.animal] tribe"));
+	console.log(tableSet.roll("Places.settlement"));
+});
 
-result.then(data => console.log(data));
+// var result = loadGS(sheetId);
 
+// result.then(data => console.log(data));
+
+// var tableSet = Tablecloth.tableSet({
+//     "Things": {
+//         "color": ["red", "orange", "yellow", "green", "blue", "violet", "white", "black"],
+//         "animal": ["leopard", "monkey", "parrot", "iguana", "bear", "horse", "warthog", "barracuda"]
+//     },
+//     "Places": {
+//         "shop": ["Alchemist", "Florist", "Blacksmith", "Tanner"],
+//         "settlement": ["City", "Hamlet", "Thorp", "Village", "Town"]
+//     },
+//     Tribe: [ "The [Things.color] [Things.animal] tribe" ]
+// });
+
+// console.log(tableSet.roll("Tribe"));
+// console.log(tableSet.getTables());
 </script>
 </body>
 </html>
