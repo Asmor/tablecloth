@@ -1,0 +1,3 @@
+[submodule "gs-loader"]
+	path = gs-loader
+	url = https://github.com/Asmor/gs-loader.git
