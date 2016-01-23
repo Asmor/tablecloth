@@ -8,7 +8,7 @@ var Tablecloth = (function () {
 		var macroRegex = /([^[]*)\[([^\]]*)\](.*)/;
 		var match;
 
-		while ( match = term.match(macroRegex)) {
+		while ( match = term.match(macroRegex) ) {
 			term = match[1] + this.pick(match[2]) + match[3];
 		}
 

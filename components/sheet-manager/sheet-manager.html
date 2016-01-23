@@ -1,0 +1,8 @@
+<div class="sheet-manager">
+	<ul>
+		<li ng-repeat="key in sheets.keys">
+			{{ key }}
+			<button ng-click="sheets.load(key)">Load</button>
+		</li>
+	</ul>
+</div>

@@ -1,0 +1,13 @@
+<div class="sheet-manager">
+	<ul>
+		<li ng-repeat="table in sheets.tables">
+			{{ table }}
+			<button ng-click="results.push(sheets.roll(table))">Roll</button>
+		</li>
+	</ul>
+	<ul>
+		<li ng-repeat="result in results | reverse track by $index">
+			{{ result }}
+		</li>
+	</ul>
+</div>

@@ -3,5 +3,5 @@
 	"devel": true,
 	"esnext": true,
 	"globalstrict": true,
-	"predef": [ "require", "module" ]
+	"predef": [ "angular" ]
 }
