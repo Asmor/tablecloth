@@ -31,6 +31,17 @@ angular.module("tablecloth")
 			return false;
 		}
 
+		alert(name + id);
+
+		var match = id.match(/\b([-a-z0-9_]{44})\b/i);
+
+		if ( !match ) {
+			alert("Couldn't find a valid ID in: " + id);
+			return false;
+		}
+
+		id = match[1];
+
 		var newLength = ss.keys.push({name, id});
 		ss.load(newLength - 1);
 		save();
