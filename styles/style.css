@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  font-family: arial; }
+
+.instructions h1 {
+  margin: 20px 0; }
+.instructions p {
+  margin: 10px 0; }
+
+.sheet-manager .sheet-manager--key-id {
+  font-size: .6rem;
+  font-style: italic; }
