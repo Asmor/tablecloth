@@ -60,7 +60,7 @@ var Tablecloth = (function () {
 			next = keys.shift();
 
 			if ( !target[next] ) {
-				throw new Error("Can't find definition: " . path);
+				throw new Error("Can't find definition: " + path);
 			}
 
 			target = target[next];

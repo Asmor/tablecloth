@@ -6,7 +6,6 @@ angular.module("tablecloth")
 .factory("sheetService", ["$q", function ($q) {
 	var ss = {
 		keys: [
-			"1x491NmMhzZMmqSd9GEWu-kHZs374-FtJA3oTWatWK6A",
 			"1MBKVa23DHV_PeenD8iv-dAPVfqBqDmZMS5Enfjf73Y0"
 		],
 		tables: [],
@@ -14,11 +13,9 @@ angular.module("tablecloth")
 	var tableSet;
 
 	ss.load = function load(id) {
-		console.log(id);
 		$q.when(loadGS(id)).then(function (data) {
 			tableSet = Tablecloth.tableSet(data);
 			ss.tables = tableSet.getTables();
-			console.log(ss.tables);
 		});
 	};
 
@@ -27,6 +24,9 @@ angular.module("tablecloth")
 
 		return tableSet.roll(table);
 	};
+
+	// Initialize
+	ss.load(ss.keys[0]);
 
 	return ss;
 }])
