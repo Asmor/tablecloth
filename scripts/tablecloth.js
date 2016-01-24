@@ -23,6 +23,11 @@ var Tablecloth = (function () {
 		Object.keys(o).forEach(function (key) {
 			var branch = o[key];
 
+			// Sheets and columns starting with underscores are hidden
+			if ( key.match(/^_|\._/) ) {
+				return;
+			}
+
 			if ( branch instanceof Array ) {
 				tables.push(key);
 				return;
