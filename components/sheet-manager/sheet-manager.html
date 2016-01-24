@@ -7,9 +7,9 @@
 			<button ng-click="sheets.remove($index)" ng-if="$index != 0">Remove</button>
 		</li>
 		<li>
+			<button ng-click="sheets.add(addName, addId) &amp;&amp; (addName = addId = '')">Add</button>
 			<input ng-model="addName" placeholder="Name"/>
 			<input ng-model="addId" placeholder="ID or URL"/>
-			<button ng-click="sheets.add(addName, addId) &amp;&amp; (addName = addId = '')">Add</button>
 		</li>
 	</ul>
 </div>
