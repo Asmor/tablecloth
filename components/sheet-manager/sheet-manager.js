@@ -56,6 +56,7 @@ angular.module("tablecloth")
 
 		ss.keys.splice(index, 1);
 		ss.load(0);
+		save();
 		return true;
 	};
 
