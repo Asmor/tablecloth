@@ -1,13 +1,20 @@
 <div class="sheet-manager">
 	<ul class="sheet-manager--key-list">
 		<li ng-repeat="key in sheets.keys track by $index">
-			<button ng-click="sheets.load($index)" ng-disabled="sheets.loadedIndex == $index">Load</button>
+			<button
+				class="sheet-manager--load-button"
+				ng-click="sheets.load($index)"
+				ng-disabled="sheets.loadedIndex == $index"
+			>Load</button>
 			<span class="sheet-manager--key-name">{{ key.name }}</span>
 			<span class="sheet-manager--key-id">{{ key.id }}</span>
-			<button ng-click="sheets.remove($index)" ng-if="$index != 0">Remove</button>
+			<button class="sheet-manager--remove-button" ng-click="sheets.remove($index)" ng-if="$index != 0">Remove</button>
 		</li>
 		<li>
-			<button ng-click="sheets.add(addName, addId) &amp;&amp; (addName = addId = '')">Add</button>
+			<button
+				class="sheet-manager--add-button"
+				ng-click="sheets.add(addName, addId) &amp;&amp; (addName = addId = '')"
+			>Add</button>
 			<input ng-model="addName" placeholder="Name"/>
 			<input ng-model="addId" placeholder="ID or URL"/>
 		</li>
