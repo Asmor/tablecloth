@@ -9,6 +9,7 @@ angular.module("tablecloth")
 			{ id: "1MBKVa23DHV_PeenD8iv-dAPVfqBqDmZMS5Enfjf73Y0", name: "Default" }
 		],
 		tables: [],
+		results: [],
 	};
 	var tableSet;
 
@@ -111,8 +112,22 @@ angular.module("tablecloth")
 		templateUrl: "components/sheet-manager/table-list.html",
 		link: function (scope) {
 			scope.sheets = sheetService;
-			scope.results = [];
 		},
+	};
+}])
+.directive("resultList", ["sheetService", function (sheetService) {
+	return {
+		restrict: "E",
+		templateUrl: "components/sheet-manager/result-list.html",
+		link: function (scope) {
+			scope.sheets = sheetService;
+		},
+	};
+}])
+.directive("instructions", [function () {
+	return {
+		restrict: "E",
+		templateUrl: "components/sheet-manager/instructions.html",
 	};
 }])
 ;

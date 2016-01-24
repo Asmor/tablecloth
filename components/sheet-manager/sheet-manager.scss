@@ -1,6 +1,37 @@
 .sheet-manager {
+	@extend %one-quarter;
+
 	.sheet-manager--key-id {
 		font-size: .6rem;
 		font-style: italic;
 	}
+
+	.sheet-manager--remove-button {
+		color: red;
+		font-size: .6rem;
+		text-decoration: underline;
+		font-style: italic;
+		border: 0;
+		background-color: transparent;
+		cursor: pointer;
+	}
+
+}
+
+.instructions {
+	h1 {
+		margin: 20px 0;
+	}
+
+	p {
+		margin: 10px 0;
+	}
+}
+
+.table-list {
+	@extend %one-quarter;
+}
+
+.result-list {
+	@extend %one-half;
 }

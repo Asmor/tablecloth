@@ -5,11 +5,30 @@
   list-style-type: none;
   font-family: arial; }
 
-.instructions h1 {
-  margin: 20px 0; }
-.instructions p {
-  margin: 10px 0; }
+.sheet-manager, .table-list, .result-list {
+  overflow: auto;
+  float: left;
+  padding: 20px; }
+
+.sheet-manager, .table-list {
+  width: 25%; }
+
+.result-list {
+  width: 50%; }
 
 .sheet-manager .sheet-manager--key-id {
   font-size: .6rem;
   font-style: italic; }
+.sheet-manager .sheet-manager--remove-button {
+  color: red;
+  font-size: .6rem;
+  text-decoration: underline;
+  font-style: italic;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer; }
+
+.instructions h1 {
+  margin: 20px 0; }
+.instructions p {
+  margin: 10px 0; }
