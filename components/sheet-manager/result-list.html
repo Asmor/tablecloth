@@ -1,0 +1,9 @@
+<div class="result-list">
+	<ul class="result-list--results">
+		<li ng-repeat="result in sheets.results | reverse track by $index">
+			<span class="result-list--result">
+				{{ result }}
+			</span>
+		</li>
+	</ul>
+</div>
