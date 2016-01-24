@@ -39,8 +39,6 @@ angular.module("tablecloth")
 			return false;
 		}
 
-		alert(name + id);
-
 		var match = id.match(/\b([-a-z0-9_]{44})\b/i);
 
 		if ( !match ) {
