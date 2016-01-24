@@ -12,11 +12,12 @@ angular.module("tablecloth")
 	};
 	var tableSet;
 
-	ss.load = function load(id) {
-		$q.when(loadGS(id)).then(function (data) {
+	ss.load = function load(index) {
+		$q.when(loadGS(ss.keys[index].id)).then(function (data) {
 			tableSet = Tablecloth.tableSet(data);
 			ss.tables = tableSet.getTables();
 		});
+		ss.loadedIndex = index;
 	};
 
 	ss.roll = function roll(table) {
@@ -30,8 +31,8 @@ angular.module("tablecloth")
 			return false;
 		}
 
-		ss.keys.push({name, id});
-		ss.load(id);
+		var newLength = ss.keys.push({name, id});
+		ss.load(newLength - 1);
 		save();
 		return true;
 	};
@@ -43,6 +44,7 @@ angular.module("tablecloth")
 		}
 
 		ss.keys.splice(index, 1);
+		ss.load(0);
 		return true;
 	};
 
@@ -70,7 +72,7 @@ angular.module("tablecloth")
 	}
 
 	// Initialize
-	ss.load(ss.keys[0].id);
+	ss.load(0);
 	load();
 
 	return ss;
