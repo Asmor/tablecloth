@@ -1,6 +1,6 @@
 <div class="sheet-manager">
 	<ul class="sheet-manager--key-list">
-		<li ng-repeat="key in sheets.keys track by $index">
+		<li class="sheet-manager--key-entry" ng-repeat="key in sheets.keys track by $index">
 			<button
 				class="sheet-manager--load-button"
 				ng-click="sheets.load($index)"
@@ -10,7 +10,7 @@
 			<span class="sheet-manager--key-id">{{ key.id }}</span>
 			<button class="sheet-manager--remove-button" ng-click="sheets.remove($index)" ng-if="$index != 0">Remove</button>
 		</li>
-		<li>
+		<li class="sheet-manager--key-entry">
 			<button
 				class="sheet-manager--add-button"
 				ng-click="sheets.add(addName, addId) &amp;&amp; (addName = addId = '')"

@@ -16,6 +16,13 @@
 		cursor: pointer;
 	}
 
+	.sheet-manager--key-entry {
+		margin: 10px 0;
+
+		&:first-child {
+			margin-top: 0;
+		}
+	}
 }
 
 .instructions {
@@ -30,6 +37,14 @@
 
 .table-list {
 	@extend %one-quarter;
+
+	.table-list--entry {
+		margin: 10px 0;
+
+		&:first-child {
+			margin-top: 0;
+		}
+	}
 }
 
 .result-list {
