@@ -16,6 +16,13 @@ angular.module("tablecloth")
 		$q.when(loadGS(ss.keys[index].id)).then(function (data) {
 			tableSet = Tablecloth.tableSet(data);
 			ss.tables = tableSet.getTables();
+		}).catch(function () {
+			alert("Unable to load spreadsheet. Are you sure it's published?");
+
+			// Fall back to default
+			if ( ss.loadedIndex ) {
+				ss.load(0);
+			}
 		});
 		ss.loadedIndex = index;
 	};
