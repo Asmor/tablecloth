@@ -11,7 +11,7 @@
 
 			<br/>
 
-			<span class="sheet-manager--key-id">{{ key.id }}</span>
+			<a class="sheet-manager--key-id" ng-href="https://docs.google.com/spreadsheets/d/{{ key.id }}/pubhtml">{{ key.id }}</a>
 			<button class="sheet-manager--remove-button" ng-click="sheets.remove($index)" ng-if="$index != 0">Remove</button>
 		</li>
 		<li class="sheet-manager--key-entry">
