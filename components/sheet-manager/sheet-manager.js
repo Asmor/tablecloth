@@ -48,6 +48,13 @@ angular.module("tablecloth")
 
 		id = match[1];
 
+		var index = ss.getIndexById(id);
+
+		if ( index !== null ) {
+			ss.load(index);
+			return false;
+		}
+
 		var newLength = ss.keys.push({name, id});
 		ss.load(newLength - 1);
 		save();
@@ -64,6 +71,19 @@ angular.module("tablecloth")
 		ss.load(0);
 		save();
 		return true;
+	};
+
+	ss.getIndexById = function getIndexById(id) {
+		var index = null;
+
+		ss.keys.some(function (key, i) {
+			if ( key.id === id ) {
+				index = i;
+				return true;
+			}
+		});
+
+		return index;
 	};
 
 	function load() {
