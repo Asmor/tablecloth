@@ -4,12 +4,20 @@ var Tablecloth = (function () {
 	/* jshint -W040 */ // this
 
 	function conjugate(term) {
-		/* jshint -W084 */ // conditional assignment
+		var diceRegex = /(.*)(\d+d\d+(?:[-+x]\d+)?)(.*)/i;
 		var macroRegex = /([^[]*)\[([^\]]*)\](.*)/;
-		var match;
+		var macro, dice;
 
-		while ( match = term.match(macroRegex) ) {
-			term = match[1] + this.pick(match[2]) + match[3];
+		while (
+			// Roll dice expressions first before evaluating macros so macros can always expect numbers
+			( dice = term.match(diceRegex) ) ||
+			( macro = term.match(macroRegex) )
+		) {
+			if ( dice ) {
+				term = dice[1] + rollDice(dice[2]) + dice[3];
+			} else {
+				term = macro[1] + this.pick(macro[2]) + macro[3];
+			}
 		}
 
 		return term;
@@ -51,34 +59,86 @@ var Tablecloth = (function () {
 		return this.conjugate("[" + tablename + "]");
 	}
 
-	function pick(path) {
-		var keys = path.split(/\./);
-		var target = this.definition;
+	function pick(expression) {
+		/* jshint -W084 */ // Conditional assignment
+		var parts  = expression.match(/(?:(\d+)\s+)?(?:(unique)\s+)?(.*)/i);
+		var qty    = parts[1] * 1 || 1;
+		var unique = !!parts[2];
+		var path   = parts[3];
+		var keys   = path.split(/\./);
+		var table  = this.definition;
 		var next;
 
-		while ( keys.length ) {
-			next = keys.shift();
-
-			if ( !target[next] ) {
+		while ( next = keys.shift() ) {
+			if ( !table[next] ) {
 				throw new Error("Can't find definition: " + path);
 			}
 
-			target = target[next];
+			table = table[next];
 		}
 
-		if ( ! (target instanceof Array) ) {
+		if ( ! (table instanceof Array) ) {
 				throw new Error("Not an array: " . path);
 		}
 
-		var index = Math.floor(Math.random() * target.length);
+		var rolls = {};
+		var index, result;
+		var successes = 0;
+		var failures = 0;
+		while ( (successes < qty) && (failures < 1000) ) {
+			index = Math.floor(Math.random() * table.length);
+			result = table[index];
 
-		return target[index];
+			if ( unique && rolls[result] ) {
+				failures++;
+			} else {
+				successes++;
+				rolls[result] = rolls[result] || 0;
+				rolls[result]++;
+			}
+		}
+
+		var results = [];
+		Object.keys(rolls).sort().forEach(function (result) {
+			var qty = rolls[result];
+			if ( qty > 1 ) {
+				results.push(qty + "x " + result);
+			} else {
+				results.push(result);
+			}
+		});
+
+		return results.join(", ");
 	}
 
 	function tableSet(definition) {
 		var t = { conjugate, definition, getTables, pick, roll };
 
 		return t;
+	}
+
+	function rollDice(expression) {
+		var parts = expression.match(/(\d+)d(\d+)(?:([-+x])(\d+))?/i);
+		var qty   = parts[1] * 1;
+		var size  = parts[2] * 1;
+		var op    = parts[3];
+		var mod   = parts[4] * 1 || 0;
+		var total = 0;
+		var i;
+
+		for ( i = 0; i < qty; i++ ) {
+			total += Math.floor(Math.random() * size) + 1;
+		}
+
+		if ( op === "-" ) {
+			total -= mod;
+		} else if ( op === "+" ) {
+			total += mod;
+		} else if ( op === "x" ) {
+			total *= mod;
+		} 
+
+		return total;
 	}
 
 	return {
