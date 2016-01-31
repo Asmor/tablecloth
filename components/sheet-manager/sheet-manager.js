@@ -39,6 +39,9 @@ angular.module("tablecloth")
 			return false;
 		}
 
+		name = decodeURIComponent(name);
+		id = decodeURIComponent(id);
+
 		var match = id.match(/\b([-a-z0-9_]{44})\b/i);
 
 		if ( !match ) {
@@ -126,7 +129,7 @@ angular.module("tablecloth")
 	function shareLink(key) {
 		var basePath = document.location.toString().match(/[^?#]*/)[0];
 
-		return basePath + "?id=" + key.id + "&name=" + key.name;
+		return basePath + "?id=" + encodeURIComponent(key.id) + "&name=" + encodeURIComponent(key.name);
 	}
 
 	return {
