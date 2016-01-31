@@ -41,3 +41,10 @@
   margin: 10px 0; }
   .table-list .table-list--entry:first-child {
     margin-top: 0; }
+
+.result-list .result-list--result {
+  padding-bottom: 10px; }
+  .result-list .result-list--result:not(:first-child) {
+    margin-top: 10px; }
+  .result-list .result-list--result:not(:last-child) {
+    border-bottom: 1px solid #999; }
