@@ -6,45 +6,50 @@
   font-family: arial; }
 
 .sheet-manager, .table-list, .result-list {
-  overflow: auto;
-  float: left;
-  padding: 20px; }
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  padding: 20px;
+  overflow: auto; }
 
-.sheet-manager, .table-list {
+.sheet-manager {
+  left: 0;
   width: 25%; }
-
-.result-list {
-  width: 50%; }
-
-.sheet-manager .sheet-manager--key-id {
-  font-size: .6rem;
-  font-family: monospace; }
-.sheet-manager .sheet-manager--remove-button {
-  color: red;
-  font-size: .6rem;
-  text-decoration: underline;
-  font-style: italic;
-  border: 0;
-  background-color: transparent;
-  cursor: pointer; }
-.sheet-manager .sheet-manager--key-entry {
-  margin: 10px 0; }
-  .sheet-manager .sheet-manager--key-entry:first-child {
-    margin-top: 0; }
+  .sheet-manager .sheet-manager--key-id {
+    font-size: .6rem;
+    font-family: monospace; }
+  .sheet-manager .sheet-manager--remove-button {
+    color: red;
+    font-size: .6rem;
+    text-decoration: underline;
+    font-style: italic;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer; }
+  .sheet-manager .sheet-manager--key-entry {
+    margin: 10px 0; }
+    .sheet-manager .sheet-manager--key-entry:first-child {
+      margin-top: 0; }
 
 .instructions h1 {
   margin: 20px 0; }
 .instructions p {
   margin: 10px 0; }
 
-.table-list .table-list--entry {
-  margin: 10px 0; }
-  .table-list .table-list--entry:first-child {
-    margin-top: 0; }
+.table-list {
+  left: 25%;
+  width: 25%; }
+  .table-list .table-list--entry {
+    margin: 10px 0; }
+    .table-list .table-list--entry:first-child {
+      margin-top: 0; }
 
-.result-list .result-list--result {
-  padding-bottom: 10px; }
-  .result-list .result-list--result:not(:first-child) {
-    margin-top: 10px; }
-  .result-list .result-list--result:not(:last-child) {
-    border-bottom: 1px solid #999; }
+.result-list {
+  left: 50%;
+  width: 50%; }
+  .result-list .result-list--result {
+    padding-bottom: 10px; }
+    .result-list .result-list--result:not(:first-child) {
+      margin-top: 10px; }
+    .result-list .result-list--result:not(:last-child) {
+      border-bottom: 1px solid #999; }

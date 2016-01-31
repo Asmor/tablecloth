@@ -6,20 +6,4 @@
 	font-family: arial;
 }
 
-%column {
-	overflow: auto;
-	float: left;
-	padding: 20px;
-}
-
-%one-quarter {
-	@extend %column;
-	width: 25%;
-}
-
-%one-half {
-	@extend %column;
-	width: 50%
-}
-
 @import "components";

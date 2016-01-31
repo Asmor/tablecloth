@@ -147,6 +147,10 @@ angular.module("tablecloth")
 		templateUrl: "components/sheet-manager/table-list.html",
 		link: function (scope) {
 			scope.sheets = sheetService;
+			scope.rollOn = function rollOn(table) {
+				sheetService.results.push(sheetService.roll(table));
+				document.getElementsByClassName("result-list")[0].scrollTop = 0;
+			};
 		},
 	};
 }])

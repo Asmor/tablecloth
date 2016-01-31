@@ -1,7 +1,7 @@
 <div class="table-list">
 	<ul class="table-list--list">
 		<li class="table-list--entry" ng-repeat="table in sheets.tables">
-			<button class="table-list--roll-button" ng-click="sheets.results.push(sheets.roll(table))">Roll</button>
+			<button class="table-list--roll-button" ng-click="rollOn(table)">Roll</button>
 			<span class="table-list--table-name">
 				{{ table }}
 			</span>

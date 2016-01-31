@@ -1,9 +1,18 @@
+%column {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	padding: 20px;
+	overflow: auto;
+}
+
 .sheet-manager {
-	@extend %one-quarter;
+	@extend %column;
+	left: 0;
+	width: 25%;
 
 	.sheet-manager--key-id {
 		font-size: .6rem;
-		// font-style: italic;
 		font-family: monospace;
 	}
 
@@ -37,7 +46,9 @@
 }
 
 .table-list {
-	@extend %one-quarter;
+	@extend %column;
+	left: 25%;
+	width: 25%;
 
 	.table-list--entry {
 		margin: 10px 0;
@@ -49,7 +60,9 @@
 }
 
 .result-list {
-	@extend %one-half;
+	@extend %column;
+	left: 50%;
+	width: 50%;
 
 	.result-list--result {
 		&:not(:first-child) {
