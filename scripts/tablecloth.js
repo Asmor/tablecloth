@@ -59,12 +59,12 @@ var Tablecloth = (function () {
 		return this.conjugate("[" + tablename + "]");
 	}
 
-	function pick(expression) {
+	function getWeightedTable(path) {
 		/* jshint -W084 */ // Conditional assignment
-		var parts  = expression.match(/(?:(\d+)\s+)?(?:(unique)\s+)?(.*)/i);
-		var qty    = parts[1] * 1 || 1;
-		var unique = !!parts[2];
-		var path   = parts[3];
+		if (this.weightedTables[path]) {
+			return this.weightedTables[path];
+		}
+
 		var keys   = path.split(/\./);
 		var table  = this.definition;
 		var next;
@@ -81,13 +81,26 @@ var Tablecloth = (function () {
 				throw new Error("Not an array: " . path);
 		}
 
+		this.weightedTables[path] = generateWeightedTable(table);
+
+		return this.weightedTables[path];
+	}
+
+	function pick(expression) {
+		var parts  = expression.match(/(?:(\d+)\s+)?(?:(unique)\s+)?(.*)/i);
+		var qty    = parts[1] * 1 || 1;
+		var unique = !!parts[2];
+		var path   = parts[3];
+		var keys   = path.split(/\./);
+		var table  = this.getWeightedTable(path);
+
 		var rolls = {};
 		var index, result;
 		var successes = 0;
 		var failures = 0;
+
 		while ( (successes < qty) && (failures < 1000) ) {
-			index = Math.floor(Math.random() * table.length);
-			result = table[index];
+			result = table.roll();
 
 			if ( unique && rolls[result] ) {
 				failures++;
@@ -112,9 +125,17 @@ var Tablecloth = (function () {
 	}
 
 	function tableSet(definition) {
-		var t = { conjugate, definition, getTables, pick, roll };
+		var weightedTables = {};
 
-		return t;
+		return {
+			conjugate,
+			definition,
+			getTables,
+			getWeightedTable,
+			pick,
+			roll,
+			weightedTables
+		};
 	}
 
 	function rollDice(expression) {
@@ -143,5 +164,47 @@ var Tablecloth = (function () {
 
 	return {
 		tableSet: tableSet,
+	};
+}());
+
+var generateWeightedTable = (function () {
+	/* jshint -W040 */ // this
+
+	function roll() {
+		var n = Math.floor(Math.random() * this.sum);
+		var i, value;
+
+		for ( i = 0; i < this.results.length; i++ ) {
+			value = this.results[i];
+			if ( n < value.weight ) {
+				return value.text;
+			}
+
+			n -= value.weight;
+		}
+	}
+
+	return function generateWeightedTable(arr) {
+		var results = [];
+		var multiplier = 10;
+		var sum = 0;
+
+		arr.forEach(function (expression) {
+			var parts = expression.match(/(\d+(?:\.\d+)?)?\s*(.*)/);
+			var weight = parts[1] * 1 || 1;
+			var text = parts[2];
+
+			// Allow up to 1 decimal digit
+			weight = Math.round(weight * 10);
+			sum += weight;
+
+			results.push({ text, weight });
+		});
+
+		return {
+			results,
+			roll,
+			sum,
+		};
 	};
 }());
