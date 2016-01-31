@@ -7,6 +7,10 @@
 				ng-disabled="sheets.loadedIndex == $index"
 			>Load</button>
 			<span class="sheet-manager--key-name">{{ key.name }}</span>
+			<a class="sheet-manager--share-link" ng-href="{{ shareLink(key) }}" ng-if="$index != 0">sharable link</a>
+
+			<br>
+
 			<span class="sheet-manager--key-id">{{ key.id }}</span>
 			<button class="sheet-manager--remove-button" ng-click="sheets.remove($index)" ng-if="$index != 0">Remove</button>
 		</li>

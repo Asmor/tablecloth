@@ -123,11 +123,18 @@ angular.module("tablecloth")
 	return ss;
 }])
 .directive("sheetManager", ["sheetService", function (sheetService) {
+	function shareLink(key) {
+		var basePath = document.location.toString().match(/[^?#]*/)[0];
+
+		return basePath + "?id=" + key.id + "&name=" + key.name;
+	}
+
 	return {
 		restrict: "E",
 		templateUrl: "components/sheet-manager/sheet-manager.html",
 		link: function (scope) {
 			scope.sheets = sheetService;
+			scope.shareLink = shareLink;
 		},
 	};
 }])
