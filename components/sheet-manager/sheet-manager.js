@@ -90,8 +90,15 @@ angular.module("tablecloth")
 	}
 
 	// Initialize
-	ss.load(0);
 	load();
+	var idMatch = document.location.search.match(/(?:\?|&)id=([-a-z0-9_]{44})/i);
+	var nameMatch = document.location.search.match(/(?:\?|&)name=([^&]*)/);
+
+	if ( idMatch && nameMatch ) {
+		ss.add(nameMatch[1], idMatch[1]);
+	} else {
+		ss.load(0);
+	}
 
 	return ss;
 }])
