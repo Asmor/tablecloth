@@ -100,7 +100,7 @@ var Tablecloth = (function () {
 		var failures = 0;
 
 		while ( (successes < qty) && (failures < 1000) ) {
-			result = table.roll();
+			result = this.conjugate(table.roll());
 
 			if ( unique && rolls[result] ) {
 				failures++;
