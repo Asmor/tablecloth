@@ -56,7 +56,18 @@ var Tablecloth = (function () {
 	}
 
 	function roll(tablename) {
-		return this.conjugate("[" + tablename + "]");
+		return format(this.conjugate("[" + tablename + "]"));
+	}
+
+	function format(s) {
+		return s.replace(/\\./g, function (val) {
+			var chars = val.split("");
+			if ( chars[1] === "n" ) {
+				return "\n\n";
+			} else {
+				return chars[1];
+			}
+		});
 	}
 
 	function getWeightedTable(path) {

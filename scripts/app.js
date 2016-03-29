@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("tablecloth", [])
+angular.module("tablecloth", ["yaru22.md"])
 .filter("reverse", [function () {
 	return function(a) {
 		var out = [];
