@@ -5,6 +5,12 @@
   list-style-type: none;
   font-family: arial; }
 
+html {
+  height: 100%; }
+
+body {
+  min-height: 100%; }
+
 .sheet-manager, .result-list {
   padding: 20px; }
 
@@ -42,9 +48,15 @@
   .instructions p {
     margin: 10px 0; }
 
+.bottom-padding {
+  height: 1000px; }
+
 @media screen and (min-width: 48em) {
   .instructions {
-    display: block; } }
+    display: block; }
+
+  .bottom-padding {
+    display: none; } }
 .table-list {
   margin-bottom: 10px; }
 

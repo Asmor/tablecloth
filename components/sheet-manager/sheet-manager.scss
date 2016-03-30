@@ -60,9 +60,17 @@
 	}
 }
 
+.bottom-padding {
+	height: 1000px;
+}
+
 @media screen and (min-width: 48em) {
 	.instructions {
 		display: block;
+	}
+
+	.bottom-padding {
+		display: none;
 	}
 }
 
