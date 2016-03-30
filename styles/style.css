@@ -35,11 +35,16 @@
     margin-top: 5px;
     width: 100%; }
 
-.instructions h1 {
-  margin: 20px 0; }
-.instructions p {
-  margin: 10px 0; }
+.instructions {
+  display: none; }
+  .instructions h1 {
+    margin: 20px 0; }
+  .instructions p {
+    margin: 10px 0; }
 
+@media screen and (min-width: 48em) {
+  .instructions {
+    display: block; } }
 .table-list {
   margin-bottom: 10px; }
 
