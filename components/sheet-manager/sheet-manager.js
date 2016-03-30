@@ -137,6 +137,7 @@ angular.module("tablecloth")
 	return {
 		restrict: "E",
 		templateUrl: "components/sheet-manager/sheet-manager.html",
+		replace: true,
 		link: function (scope) {
 			scope.sheets = sheetService;
 			scope.shareLink = shareLink;
@@ -164,6 +165,7 @@ angular.module("tablecloth")
 	return {
 		restrict: "E",
 		templateUrl: "components/sheet-manager/result-list.html",
+		replace: true,
 		link: function (scope) {
 			scope.sheets = sheetService;
 		},

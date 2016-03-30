@@ -6,11 +6,7 @@
   font-family: arial; }
 
 .sheet-manager, .result-list {
-  padding: 20px;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  overflow: auto; }
+  padding: 20px; }
 
 .sheet-manager {
   left: 0;
