@@ -1,5 +1,5 @@
-<div class="table-list" ng-if="sheets.tables.length">
-	<button class="table-list--roll-button" ng-click="selectedTable &amp;&amp; rollOn(selectedTable)">Roll</button>
+<div class="table-list pure-form" ng-if="sheets.tables.length">
+	<button class="table-list--roll-button pure-button pure-button-primary" ng-click="selectedTable &amp;&amp; rollOn(selectedTable)">Roll</button>
 	<select
 		ng-options="table as table for table in sheets.tables"
 		ng-model="selectedTable"

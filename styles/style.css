@@ -6,10 +6,10 @@
   font-family: arial; }
 
 .sheet-manager, .result-list {
+  padding: 20px;
   position: fixed;
   top: 0;
   bottom: 0;
-  padding: 20px;
   overflow: auto; }
 
 .sheet-manager {
@@ -18,6 +18,9 @@
   .sheet-manager .sheet-manager--key-id {
     font-size: .6rem;
     font-family: monospace; }
+  .sheet-manager .sheet-manager--add-button {
+    background-color: #1b4;
+    margin-top: 5px; }
   .sheet-manager .sheet-manager--remove-button {
     color: red;
     font-size: .6rem;
