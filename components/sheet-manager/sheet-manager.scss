@@ -76,6 +76,10 @@
 
 .table-list {
 	margin-bottom: 10px;
+
+	.table-list--table-select {
+		max-width: calc(100% - 70px);
+	}
 }
 
 .result-list {
