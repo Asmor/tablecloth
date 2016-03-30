@@ -13,11 +13,16 @@ angular.module("tablecloth")
 	};
 	var tableSet;
 
-	ss.load = function load(index) {
+	ss.load = function load(index, noScroll) {
 		$q.when(loadGS(ss.keys[index].id)).then(function (data) {
 			tableSet = Tablecloth.tableSet(data);
 			ss.tables = tableSet.getTables();
 			$rootScope.$broadcast("tables-loaded");
+
+			if ( !noScroll ) {
+				document.querySelectorAll(".result-list")[0].scrollIntoView();
+			}
+
 		}).catch(function (ex) {
 			alert("Unable to load spreadsheet. Are you sure it's published?");
 			console.error(ex);
@@ -73,7 +78,7 @@ angular.module("tablecloth")
 		}
 
 		ss.keys.splice(index, 1);
-		ss.load(0);
+		ss.load(0, true);
 		save();
 		return true;
 	};
@@ -122,7 +127,7 @@ angular.module("tablecloth")
 	if ( idMatch && nameMatch ) {
 		ss.add(nameMatch[1], idMatch[1]);
 	} else {
-		ss.load(0);
+		ss.load(0, true);
 	}
 
 	return ss;
