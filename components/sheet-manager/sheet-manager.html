@@ -19,8 +19,8 @@
 			>Remove</button>
 		</li>
 		<li class="sheet-manager--key-entry pure-form">
-			<input ng-model="addName" placeholder="Name"/>
-			<input ng-model="addId" placeholder="ID or URL"/>
+			<input class="sheet-manager--input" ng-model="addName" placeholder="Name"/>
+			<input class="sheet-manager--input" ng-model="addId" placeholder="ID or URL"/>
 			<button
 				class="sheet-manager--add-button pure-button"
 				ng-click="sheets.add(addName, addId) &amp;&amp; (addName = addId = '')"

@@ -16,7 +16,10 @@
 		font-family: monospace;
 	}
 
-	.sheet-manager--load-button {}
+	.sheet-manager--load-button {
+		margin: 10px;
+	}
+
 	.sheet-manager--add-button {
 		background-color: #1b4;
 		margin-top: 5px;
@@ -38,6 +41,11 @@
 		&:first-child {
 			margin-top: 0;
 		}
+	}
+
+	.sheet-manager--input {
+		margin-top: 5px;
+		width: 100%;
 	}
 }
 

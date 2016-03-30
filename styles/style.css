@@ -18,6 +18,8 @@
   .sheet-manager .sheet-manager--key-id {
     font-size: .6rem;
     font-family: monospace; }
+  .sheet-manager .sheet-manager--load-button {
+    margin: 10px; }
   .sheet-manager .sheet-manager--add-button {
     background-color: #1b4;
     margin-top: 5px; }
@@ -33,6 +35,9 @@
     margin: 10px 0; }
     .sheet-manager .sheet-manager--key-entry:first-child {
       margin-top: 0; }
+  .sheet-manager .sheet-manager--input {
+    margin-top: 5px;
+    width: 100%; }
 
 .instructions h1 {
   margin: 20px 0; }
