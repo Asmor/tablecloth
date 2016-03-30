@@ -3,7 +3,7 @@
 "use strict";
 
 angular.module("tablecloth")
-.factory("sheetService", ["$q", function ($q) {
+.factory("sheetService", ["$q", "$rootScope", function ($q, $rootScope) {
 	var ss = {
 		keys: [
 			{ id: "1MBKVa23DHV_PeenD8iv-dAPVfqBqDmZMS5Enfjf73Y0", name: "Default" }
@@ -17,6 +17,7 @@ angular.module("tablecloth")
 		$q.when(loadGS(ss.keys[index].id)).then(function (data) {
 			tableSet = Tablecloth.tableSet(data);
 			ss.tables = tableSet.getTables();
+			$rootScope.$broadcast("tables-loaded");
 		}).catch(function (ex) {
 			alert("Unable to load spreadsheet. Are you sure it's published?");
 			console.error(ex);
@@ -152,6 +153,10 @@ angular.module("tablecloth")
 				sheetService.results.push(sheetService.roll(table));
 				document.getElementsByClassName("result-list")[0].scrollTop = 0;
 			};
+
+			scope.$on("tables-loaded", function () {
+				scope.selectedTable = scope.sheets.tables[0];
+			});
 		},
 	};
 }])

@@ -1,10 +1,8 @@
-<div class="table-list">
-	<ul class="table-list--list">
-		<li class="table-list--entry" ng-repeat="table in sheets.tables">
-			<button class="table-list--roll-button" ng-click="rollOn(table)">Roll</button>
-			<span class="table-list--table-name">
-				{{ table }}
-			</span>
-		</li>
-	</ul>
+<div class="table-list" ng-if="sheets.tables.length">
+	<button class="table-list--roll-button" ng-click="selectedTable &amp;&amp; rollOn(selectedTable)">Roll</button>
+	<select
+		ng-options="table as table for table in sheets.tables"
+		ng-model="selectedTable"
+	>
+	</select>
 </div>

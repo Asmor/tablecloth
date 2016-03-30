@@ -46,23 +46,14 @@
 }
 
 .table-list {
-	@extend %column;
-	left: 25%;
-	width: 25%;
-
-	.table-list--entry {
-		margin: 10px 0;
-
-		&:first-child {
-			margin-top: 0;
-		}
-	}
+	margin-bottom: 10px;
 }
 
 .result-list {
 	@extend %column;
-	left: 50%;
-	width: 50%;
+	$size: 75%;
+	left: 100% - $size;
+	width: $size;
 
 	.result-list--result {
 		&:not(:first-child) {

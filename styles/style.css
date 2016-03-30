@@ -5,7 +5,7 @@
   list-style-type: none;
   font-family: arial; }
 
-.sheet-manager, .table-list, .result-list {
+.sheet-manager, .result-list {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -37,16 +37,11 @@
   margin: 10px 0; }
 
 .table-list {
-  left: 25%;
-  width: 25%; }
-  .table-list .table-list--entry {
-    margin: 10px 0; }
-    .table-list .table-list--entry:first-child {
-      margin-top: 0; }
+  margin-bottom: 10px; }
 
 .result-list {
-  left: 50%;
-  width: 50%; }
+  left: 25%;
+  width: 75%; }
   .result-list .result-list--result {
     padding-bottom: 10px; }
     .result-list .result-list--result:not(:first-child) {
